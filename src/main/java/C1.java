@@ -1,5 +1,3 @@
-package it.unibo.f1;
-
 /**
  * Feature 1
  *
