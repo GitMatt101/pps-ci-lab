@@ -1,4 +1,6 @@
 .gradle/
-build/
 .vscode/
+.idea/
 bin/
+build/
+.DS_Store
