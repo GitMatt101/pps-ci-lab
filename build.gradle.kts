@@ -1,6 +1,8 @@
 plugins {
     java
     scala
+    groovy
+    kotlin("jvm") version "2.3.20"
     jacoco
 }
 
@@ -9,10 +11,17 @@ repositories {
 }
 
 dependencies {
+    implementation("org.codehaus.groovy:groovy:3.0.25")
     implementation("org.scala-lang:scala3-library_3:3.7.4")
+    implementation(kotlin("stdlib"))
     testImplementation(platform("org.junit:junit-bom:6.0.3"))
     testImplementation("org.junit.jupiter:junit-jupiter")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+}
+
+tasks.named("build") {
+    dependsOn("javadoc")
+    dependsOn("scaladoc")
 }
 
 tasks.named<Test>("test") {
