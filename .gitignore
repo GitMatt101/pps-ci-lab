@@ -1,6 +1,7 @@
 .gradle/
 .vscode/
 .idea/
+.metals/
 bin/
 build/
 .DS_Store
