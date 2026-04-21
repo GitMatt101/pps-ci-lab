@@ -1,6 +1,7 @@
 plugins {
     java
     scala
+    jacoco
 }
 
 repositories {
@@ -16,4 +17,26 @@ dependencies {
 
 tasks.named<Test>("test") {
     useJUnitPlatform()
+}
+
+tasks.jacocoTestReport {
+    dependsOn(tasks.test)
+
+    reports {
+        xml.required.set(false)
+        csv.required.set(false)
+        html.outputLocation.set(layout.buildDirectory.dir("jacocoHtml"))
+    }
+}
+
+val coverageThreshold = BigDecimal("0.80")
+
+tasks.jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            limit {
+                minimum = coverageThreshold
+            }
+        }
+    }
 }
