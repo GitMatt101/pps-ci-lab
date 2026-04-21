@@ -14,6 +14,11 @@ dependencies {
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
+tasks.named("build") {
+    dependsOn("javadoc")
+    dependsOn("scaladoc")
+}
+
 tasks.named<Test>("test") {
     useJUnitPlatform()
 }
