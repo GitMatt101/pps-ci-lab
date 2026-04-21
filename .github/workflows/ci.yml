@@ -30,7 +30,7 @@ jobs:
           java-version: 25
           distribution: 'temurin'
       - name: Run Tests and Generate Report
-        run: ./gradlew test jacocoTestReport
+        run: ./gradlew jacocoTestReport
       - name: Upload to Codecov
         uses: codecov/codecov-action@v6
         with:
