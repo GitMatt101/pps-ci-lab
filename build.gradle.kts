@@ -3,6 +3,7 @@ plugins {
     scala
     groovy
     kotlin("jvm") version "2.3.20"
+    jacoco
 }
 
 repositories {
@@ -25,4 +26,24 @@ tasks.named("build") {
 
 tasks.named<Test>("test") {
     useJUnitPlatform()
+}
+
+tasks.jacocoTestReport {
+    dependsOn(tasks.test)
+
+    reports {
+        xml.required.set(true)
+    }
+}
+
+val coverageThreshold = BigDecimal("0.80")
+
+tasks.jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            limit {
+                minimum = coverageThreshold
+            }
+        }
+    }
 }
