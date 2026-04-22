@@ -1,7 +1,7 @@
 package it.unibo;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * Class used to test {@link Class1}.
