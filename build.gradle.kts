@@ -2,7 +2,7 @@ plugins {
     java
     scala
     groovy
-    kotlin("jvm") version "2.3.20"
+     alias(libs.plugins.kotlin.jvm)
     jacoco
 }
 
@@ -11,15 +11,14 @@ repositories {
 }
 
 dependencies {
-    implementation("org.codehaus.groovy:groovy:3.0.25")
-    implementation("org.scala-lang:scala3-library_3:3.7.4")
-    implementation(kotlin("stdlib"))
-    testImplementation(platform("org.junit:junit-bom:6.0.3"))
-    testImplementation("org.junit.jupiter:junit-jupiter")
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    implementation(libs.groovy)
+    implementation(libs.scala.stdlib)
+    testImplementation(platform(libs.junit.bom))
+    testImplementation(libs.junit.jupiter)
+    testRuntimeOnly(libs.junit.platform.launcher)
 }
 
-val jvmVersion = 25
+val jvmVersion = libs.versions.jvm.get().toInt()
 
 java {
     toolchain {
