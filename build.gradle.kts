@@ -1,5 +1,3 @@
-import org.gradle.internal.jvm.inspection.JvmVendor
-
 plugins {
     java
     scala
