@@ -4,6 +4,7 @@ plugins {
     groovy
     alias(libs.plugins.kotlin.jvm)
     jacoco
+    pmd
 }
 
 repositories {
@@ -54,4 +55,11 @@ tasks.jacocoTestCoverageVerification {
             }
         }
     }
+}
+
+pmd {
+    isConsoleOutput = true
+    toolVersion = "7.23.0"
+    ruleSetFiles = files("ruleset.xml")
+    ruleSets = listOf()
 }
