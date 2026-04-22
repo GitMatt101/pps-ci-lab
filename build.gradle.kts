@@ -19,6 +19,18 @@ dependencies {
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
+val jvmVersion = 25
+
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(jvmVersion))
+    }
+}
+
+kotlin {
+    jvmToolchain(jvmVersion)
+}
+
 tasks.named("build") {
     dependsOn("javadoc")
     dependsOn("scaladoc")
