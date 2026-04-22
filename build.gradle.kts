@@ -1,3 +1,5 @@
+import org.gradle.internal.jvm.inspection.JvmVendor
+
 plugins {
     java
     scala
@@ -23,11 +25,8 @@ val jvmVersion = libs.versions.jvm.get().toInt()
 java {
     toolchain {
         languageVersion.set(JavaLanguageVersion.of(jvmVersion))
+        vendor.set(JvmVendorSpec.ADOPTIUM)
     }
-}
-
-kotlin {
-    jvmToolchain(jvmVersion)
 }
 
 tasks.named("build") {
