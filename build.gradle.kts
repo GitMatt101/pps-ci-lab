@@ -2,7 +2,7 @@ plugins {
     java
     scala
     groovy
-     alias(libs.plugins.kotlin.jvm)
+    alias(libs.plugins.kotlin.jvm)
     jacoco
 }
 
