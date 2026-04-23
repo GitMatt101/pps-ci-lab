@@ -1,0 +1,27 @@
+on:
+  push:
+    tags:
+      - 'v*'
+jobs:
+  Deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: JavaInstall
+        uses: actions/setup-java@v5
+        with:
+          java-version: '25'
+          distribution: 'temurin'
+          cache: 'gradle'
+      - name: Permissions
+        run: chmod +x gradlew
+      - name: Build
+        run: ./gradlew build
+      - name: Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release create ${{ github.ref_name }} build/libs/*.jar --title "Version ${{ github.ref_name }}" --generate-notes
